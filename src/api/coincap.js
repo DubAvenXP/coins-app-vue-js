@@ -30,4 +30,14 @@ const getCoin = async (id) => {
     return data;
 };
 
-export { getCoins, getCoin };
+const getCoinHistory = async (id) => {
+    const now = new Date();
+    const end = now.getTime();
+    now.setDate(now.getDate() - 1);
+    const start = now.getTime();
+    
+    const { data } = await coincapApi.get(`/assets/${id}/history?interval=h1&start=${start}&end=${end}`);
+    return data;
+}
+
+export { getCoins, getCoin, getCoinHistory };

@@ -12,6 +12,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
+    path: '/coin/:id',
+    name: 'coin-detail',
+    component: () => import(/* webpackChunkName: "coin-detail" */ '../views/CoinDetail.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'error',
     component: () => import(/* webpackChunkName: "error" */ '../views/Error.vue')

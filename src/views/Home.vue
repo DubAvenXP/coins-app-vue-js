@@ -15,7 +15,8 @@ export default {
 		),
 	},
 	setup() {
-		const { coins } = useCoins()
+		const { coins, getAllCoins } = useCoins()
+		getAllCoins()
 		return {
 			coins,
 		}
