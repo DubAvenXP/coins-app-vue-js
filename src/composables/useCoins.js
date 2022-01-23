@@ -37,7 +37,8 @@ const useCoins = () => {
             // console.log(exchange);
             exchange.isLoading = true;
             const respExchange = await getExchange(exchange.exchangeId);
-            exchange.url = respExchange.echangeUrl ? respExchange.echangeUrl : 'https://www.google.com/';
+            console.log(respExchange);
+            exchange.url = respExchange.data.exchangeUrl ? respExchange.data.exchangeUrl : 'https://www.google.com/';
             exchange.isLoading = false;
         },
         toggleConverter: () => {

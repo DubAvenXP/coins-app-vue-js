@@ -12,10 +12,6 @@ const getCoins = async () => {
         const { data } = await coincapApi.get("/assets", {
             params: {
                 limit: 20,
-            },
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
             }
         });
         return data;
