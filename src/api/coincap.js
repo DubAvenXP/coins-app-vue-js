@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 
 const baseUrl = "https://api.coincap.io/v2";
@@ -18,6 +19,8 @@ const getCoins = async () => {
             }
         });
         return data;
+        // const data = await fetch(`${baseUrl}/assets?limit=20`);
+        // return data.json();
     } catch (error) {
         console.log(error.response);
         return [];
@@ -28,6 +31,8 @@ const getCoins = async () => {
 const getCoin = async (id) => {
     const { data } = await coincapApi.get(`/assets/${id}`);
     return data;
+    // const data = await fetch(`${baseUrl}/assets/${id}`);
+    // return data.json();
 };
 
 const getCoinHistory = async (id) => {
@@ -35,9 +40,23 @@ const getCoinHistory = async (id) => {
     const end = now.getTime();
     now.setDate(now.getDate() - 1);
     const start = now.getTime();
-    
+
     const { data } = await coincapApi.get(`/assets/${id}/history?interval=h1&start=${start}&end=${end}`);
     return data;
-}
+    // const data = await fetch(`${baseUrl}/assets/${id}/history?interval=h1&start=${start}&end=${end}`);
+    // return data.json();
+};
 
-export { getCoins, getCoin, getCoinHistory };
+const getMarkets = async coin => {
+    const { data } = await coincapApi.get(`/assets/${coin}/markets?limit=5`);
+    return data;
+};
+const getExchange = async id => {
+    const { data } = await coincapApi.get(`/exchanges/${id}`);
+    return data;
+};
+
+
+
+
+export { getCoins, getCoin, getCoinHistory, getMarkets, getExchange };
